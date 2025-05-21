@@ -1414,7 +1414,7 @@ export default function Home() {
                   style={{ fontSize: "14px", lineHeight: "18px" }}
                 >
                   No, these therapies are non-invasive and absolutely safe for
-                  your child.
+                  your childs.
                 </p>
               </div>
             </details>
