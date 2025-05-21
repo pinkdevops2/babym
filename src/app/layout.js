@@ -1,16 +1,21 @@
-import { Geist, Geist_Mono } from "next/font/google";
+// app/layout.tsx or app/layout.js
+import { Lato, Baloo_2 } from "next/font/google";
 import "./globals.css";
 import Header from "@/common/Header";
 import Footer from "@/common/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const lato = Lato({
+  variable: "--font-lato",
   subsets: ["latin"],
+  weight: ["400", "700"], // Choose weights you need
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const baloo2 = Baloo_2({
+  variable: "--font-baloo2",
   subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
 });
 
 export const metadata = {
@@ -22,7 +27,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
+        className={`${lato.variable} ${baloo2.variable} antialiased flex flex-col min-h-screen`}
       >
         <Header />
         <main className="flex-grow">{children}</main>

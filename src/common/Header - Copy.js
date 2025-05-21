@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import logo from "../app/assets/baby_md_logo.svg";
+import logo from "../app/assets/logo.png";
 import Image from "next/image";
 
-export default function Header() {
+export default function Headerhome() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -13,15 +13,15 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white p-4 sticky top-0 z-50">
+    <header className="bg-[#FFFBE6] p-4 shadow-sm sticky top-0 z-50">
       <div className="flex justify-between items-center px-1 py-2">
       <Link href="/" passHref>
         <div className="flex items-center space-x-2 cursor-pointer">
           <Image
             src={logo}
             alt="babyMD Logo"
-            width={120}
-            height={35}
+            width={80}
+            height={50}
             className="object-contain"
           />         
         </div>
@@ -108,6 +108,7 @@ export default function Header() {
           </ul>
         </nav>
       )}
+      <div className="border-t border-[#FF6F61] border-dashed mt-2"></div>
     </header>
   );
 }
