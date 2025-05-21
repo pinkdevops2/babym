@@ -69,11 +69,11 @@ export default function Home() {
           {/* White Text Frame */}
           <div className="md:mt-7 mb-8">
             <p>
-              You deserve care that's as thoughtful as your
+              You deserve care that&apos;s as thoughtful as your
               <br />
               parenting. From cozy clinics to expert
               <br />
-              pediatricians and holistic support, we're here
+              pediatricians and holistic support, we&apos;re here
               <br />
               for every milestone, worry, and wonder.
             </p>
@@ -104,7 +104,7 @@ export default function Home() {
             className="absolute bottom-12 left-11 transform -translate-x-1/2"
           />
           <button className="absolute flex top-85 translate-x-9 items-center gap-2 bg-[#F9825F] hover:bg-[#f86f47] text-white font-bold py-3 px-10 rounded-full text-sm tracking-wide transition-transform duration-300 transform hover:scale-105">
-            WHERE IS MY SUPERDOC'S?
+            WHERE IS MY SUPERDOC&apos;S?
             <span className="text-white text-base col">⏵</span>
           </button>
         </div>
@@ -365,7 +365,7 @@ export default function Home() {
                 </summary>
                 <div className="p-4 bg-[#E6D6FA] text-sm text-gray-700 leading-relaxed">
                   Comprehensive health check-ups and consultations for your
-                  child's everyday needs.
+                  child&apos;s everyday needs.
                 </div>
               </details>
 
@@ -493,7 +493,7 @@ export default function Home() {
                 <div className="p-4 bg-[#D6F4FA] text-sm text-gray-700 leading-relaxed">
                   Our developmental pediatricians and certified therapists go
                   beyond symptoms to create personalized plans that address your
-                  little one's unique needs — from speech delays to behavioral
+                  little one&apos;s unique needs — from speech delays to behavioral
                   challenges.
                 </div>
               </details>
@@ -553,17 +553,17 @@ export default function Home() {
           <div className="max-w-2xl">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
               Curious about your{" "}
-              <span className="text-[#4B3A8F]">child's growth?</span>
+              <span className="text-[#4B3A8F]">child&apos;s growth?</span>
               <br />
-              <span className="text-[#4B3A8F]">Let's take a look </span>
+              <span className="text-[#4B3A8F]">Let&apos;s take a look </span>
               <span className="text-[#4B3A8F] italic">together</span>
             </h2>
             <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              You're the expert when it comes to your child — but sometimes, it
+              You&apos;re the expert when it comes to your child — but sometimes, it
               helps to have an extra pair of professional eyes. Our free, online{" "}
               <span className="font-semibold">milestone assessment tool</span>{" "}
               lets you easily track their development, from physical growth to
-              behavioral needs. In just a few simple steps, you'll get the
+              behavioral needs. In just a few simple steps, you&apos;ll get the
               clarity you need to understand where they stand and feel confident
               in their progress.
             </p>
@@ -603,14 +603,14 @@ export default function Home() {
               <span className="text-[#4B3A8F] italic">the corner</span>
             </h2>
             <p className="text-lg leading-relaxed mb-6">
-              Late-night worries or last-minute scrambles shouldn't mean a long
-              drive or endless queues. We're all about making care easy and
+              Late-night worries or last-minute scrambles shouldn&apos;t mean a long
+              drive or endless queues. We&apos;re all about making care easy and
               accessible, so you can feel confident even on your toughest days.
-              That's why our clinics are right in your neighborhood — cozy,
+              That&apos;s why our clinics are right in your neighborhood — cozy,
               colourful, and designed with your little one in mind.
             </p>
             <p className="text-lg mb-8">
-              Call us, book online, or just walk in, we'll be ready.
+              Call us, book online, or just walk in, we&apos;ll be ready.
             </p>
             <div className="relative">
               <input
@@ -723,7 +723,7 @@ export default function Home() {
         <div className="bg-[#DFF1FF] rounded-t-3xl p-6 md:p-8 text-[#4B3A8F] relative">
           {/* Heading */}
           <h2 className="text-xl md:text-2xl font-bold mb-2">
-            Don't just <span className="text-purple-600">take</span>
+            Don&apos;t just <span className="text-purple-600">take</span>
             <br />
             <span className="text-purple-600 italic font-medium">
               our word
@@ -739,12 +739,12 @@ export default function Home() {
           {/* Testimonial Box */}
           <div className="bg-white rounded-lg p-4 md:p-5 mt-4 shadow-sm relative">
             <p className="text-sm leading-relaxed text-gray-800">
-              "We had a wonderful consultation with Dr Shivanga Bora at BabyMD
-              HSR Layout, for my son's wheezing issue. She was incredibly
+              &quot;We had a wonderful consultation with Dr Shivanga Bora at BabyMD
+              HSR Layout, for my son&apos;s wheezing issue. She was incredibly
               patient, listened to all our concerns, and provided a clear
               effective treatment plan. Her friendly approach and expertise made
               us feel reassured and confident in the care my son received. Highly
-              recommend her for pediatric care!"
+              recommend her for pediatric care!&quot;
             </p>
 
             {/* Author */}
@@ -790,7 +790,7 @@ export default function Home() {
             </h2>
             <p className="text-sm text-black mt-2 leading-tight">
               Ever wished parenting came with a guidebook? From picky eating to
-              tantrums, we know you've got questions. Join our expert-led
+              tantrums, we know you&apos;ve got questions. Join our expert-led
               webinars to get practical tips and expert answers to feel confident
               and supported in your parenting journey.
             </p>
@@ -827,7 +827,7 @@ export default function Home() {
                   {/* Tags positioned INSIDE the image at the bottom */}
                   <div className="absolute bottom-2 left-0 right-0 flex flex-wrap gap-1 px-2">
                     <span className="border border-white bg-opacity-20 backdrop-blur-sm text-white px-2 py-0.5 rounded-full text-[10px] font-medium">
-                      PARENT'S KNOWLEDGE
+                      PARENT&apos;S KNOWLEDGE
                     </span>
                     <span className="border border-white bg-opacity-20 backdrop-blur-sm text-white px-2 py-0.5 rounded-full text-[10px] font-medium">
                       CHILD FEEDING CARE
@@ -836,7 +836,7 @@ export default function Home() {
                       FEEDING CARE
                     </span>
                     <span className="border border-white bg-opacity-20 backdrop-blur-sm text-white px-2 py-0.5 rounded-full text-[10px] font-medium">
-                      PARENT'S KNOWLEDGE
+                      PARENT&apos;S KNOWLEDGE
                     </span>
                   </div>
                 </div>
@@ -918,7 +918,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative bg-[#FF9A6C] text-white mt-8 px-4 py-6 rounded-2xl space-y-14 max-w-sm mx-10 overflow-hidden">
+        <div className="relative bg-[#FF9A6C] text-white mt-3 px-4 py-6 rounded-2xl space-y-14 max-w-sm mx-10 overflow-hidden">
           {/* Heading */}
           <div
             style={{
@@ -954,7 +954,7 @@ export default function Home() {
           </div>
 
           {/* Membership Cards */}
-          <div className="flex flex-row gap-3">
+          <div className="flex flex-row gap-3 ">
             {/* Gold Plan */}
             <div
               className="bg-white text-[#231F20] p-4 rounded-xl space-y-2 shadow w-full"
@@ -993,27 +993,27 @@ export default function Home() {
               }}
             >
               <div className="text-[#6C40B5] text-2xl">💎</div>
-              <h3 className="font-semibold text-sm">Platinum Membership</h3>
-              <p className="text-xs">Our best value for growing families</p>
-              <p className="text-[#009A67] font-bold text-lg mt-1">
-                ₹999<span className="text-xs">/year</span>
-              </p>
-              <ul className="text-xs list-disc list-inside text-[#4D4D4D] space-y-1 mt-2">
-                <li>15% off consults</li>
-                <li>10% off all services</li>
-                <li>₹1000 gift card</li>
-              </ul>
-            </div>
+                <h3 className="font-semibold text-sm">Platinum Membership</h3>
+                <p className="text-xs">Our best value for growing families</p>
+                <p className="text-[#009A67] font-bold text-lg mt-1">
+                  ₹999<span className="text-xs">/year</span>
+                </p>
+                <ul className="text-xs list-disc list-inside text-[#4D4D4D] space-y-1 mt-2">
+                  <li>15% off consults</li>
+                  <li>10% off all services</li>
+                  <li>₹1000 gift card</li>
+                </ul>
+              </div>
           </div>
 
           {/* Note */}
           <p
-            className="text-xs leading-snug"
+            className="text-xs "
             style={{
               fontWeight: "400",
               fontSize: "16px",
-              lineHeight: "22px",
-              fontFamily: "Lato, sans-serif",
+              lineHeight: "22px",      
+              fontFamily: "Lato, sans-serif"
             }}
           >
             With both plans, you get priority booking at all BabyMD clinics and
@@ -1023,7 +1023,7 @@ export default function Home() {
           </p>
 
           {/* CTA Button */}
-          <div className="flex justify-center relative mb-10 z-15">
+          <div className="flex justify-center relative mt-5 mb-4 z-15">
             <button className="bg-[#4B3A8F] text-white text-sm font-semibold py-3 px-6 rounded-full flex items-center gap-2 hover:scale-105 transition">
               PICK A PLAN, START SAVING
               <span className="text-base">⏵</span>
@@ -1035,7 +1035,7 @@ export default function Home() {
             <Image
               src={Premiumlayer}
               alt="Background shape"
-              className=" top-208  right-1 absolute"
+              className=" top-205  right-1.5 absolute"
               
             />
             <Image
