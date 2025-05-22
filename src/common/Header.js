@@ -29,7 +29,7 @@ export default function Header() {
 
       <button onClick={toggleMenu} className="text-[#4B3A8F] focus:outline-none">
         <svg width="26" height="18" viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M11.25 8.87073H24.0767M1.92285 16.2552H24.0767M1.92285 1.48584H24.0767" stroke="#5943A5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.25 8.87073H24.0767M1.92285 16.2552H24.0767M1.92285 1.48584H24.0767" stroke="#5943A5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
 
       </button>

@@ -1,8 +1,130 @@
+'use client';
+import Image from 'next/image';
 export default function Clinic() {
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold text-[#4B3A8F] mb-4">Welcome to BabyMD</h1>
-      <p className="text-[#4B3A8F]">Comprehensive pediatric care for your child.</p>
-    </div>
+    <>
+      <div className="banner-box bg-[#F9EEB6] relative z-2 py-14 pb-6">
+        <div className="container mx-auto">
+          <div className="flex flex-col justify-center items-center md:flex-row">
+            <div className="w-full md:w-1/2">
+              <div className="relative px-8 md:px-0">
+                <h1 className="text-2xl font-bold text-[34px]">
+                  Care that feels <span className="text-[#5943A5]">like your second </span>
+                  <span className="relative">
+                    <i className="font-normal text-[#5943A5] z-2 relative">home</i>
+                    <img className="absolute top-[13px] right-0 z-0" src="/images/Vector 2.svg" alt="Vector 2" />
+                  </span>
+                </h1>
+                <p>
+                  Got a sniffle, stumble, or question that can’t wait? We’re just down the road,
+                  stocked with smiles, support, and paediatric pros who get it.
+                </p>
+                <img className="absolute top-[-40px] right-[30px]" src="/images/Group 427319502.svg" alt="Decorative" />
+                <img className="absolute bottom-[-60px] left-[20px]" src="/images/Group 427319515.svg" alt="Decorative" />
+              </div>
+            </div>
+
+            <div className="w-full py-4 md:w-1/2 md:py-0 relative px-8 md:px-0">
+              <img className="mx-auto" src="/images/Vector.svg" alt="Vector" />
+              <img className="mx-auto absolute absolute-center" src="/images/Mask group.svg" alt="Mask group" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <img className="w-full relative z-0 top-[-5] bg-[#FFF2EF]" src="/images/Vector 141.svg" alt="Vector 141" />
+
+      <div className="location-section bg-[#FFF2EF] py-4 relative top-[-5px]">
+        <div className="container mx-auto">
+          <div className="flex flex-row gap-1 items-start">
+            <div className="w-full md:w-1/2">
+              <div className="relative px-6 md:px-0">
+                <h2 className="text-2xl font-bold text-[28px] leading-[26px] pb-4">
+                  Right around the<br/>corner, <span className="text-[#5943A5]">ready with </span>
+				  <br/>
+                  <span className="relative">
+                    <i className="font-normal text-[#5943A5] z-2">care</i>
+                  </span>
+				  <img className="swing w-[80px] absolute right-[40px] top-[-20px]" src="/images/4be6e5c41183d4eea09865755fb1b63ab0582ac3.png" alt="Map" />
+				  <img className="absolute right-[30px] top-[50px]" src="/images/Group 427319502.svg" alt="Decorative" />
+                </h2>
+                <p>
+                  Whether youre in HSR, Hosa Road, Whitefield, or wherever life takes you,
+                  we’re all set with our warm spaces and caring faces for your tiny superstar.
+                  And yep, we’re popping up in even more neighbourhoods.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Clinic Cards */}
+          <div className="w-full my-8 flex flex-col md:flex-row gap-4 px-6">
+            {[1, 2, 3, 4].map((_, i) => (
+              <div key={i} className="w-full lg:w-1/2 xl:w-1/4">
+                <div className="bg-white p-4 rounded-[20px]">
+                  <img className="mx-auto rounded-[20px]" src="/images/f599ef5c0bc6b9e548520dd4c3c29270435d932e.jpg" alt="Clinic" />
+                  <div className="p-4">
+                    <h4 className="text-[20px] font-bold my-1 font-lato">BabyMD – Hosa Road</h4>
+                    <div className="flex flex-row gap-2">
+                      <img src="/images/map-pin.svg" alt="Map pin" />
+                      <h5 className="text-[14px] text-[#F8845D] underline uppercase tracking-[2px]">locate clinic</h5>
+                    </div>
+                    <div className="clinic-hrs mt-6">
+                      <h4 className="text-[14px] font-bold font-lato">Clinic Hours:</h4>
+                      <h4 className="text-[14px] font-lato">
+                        <span className="font-bold">Monday to Saturday </span> – 8 AM to 1:30 PM | 4 PM to 8:30 PM
+                      </h4>
+                      <h4 className="text-[14px] font-lato">
+                        <span className="font-bold">Sunday </span> – 9 AM to 12 PM
+                      </h4>
+                      <button type="button" className="text-white bg-[#5943A5] hover:bg-[#F8845D] transition-all focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-7 py-4 text-center mt-5 mx-auto flex flex-row gap-2">
+                        <span>view details</span>
+                        <img src="/images/Group 2349.png" alt="Arrow" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="w-full my-2 flex justify-center flex-row gap-2">
+            <h1 className="text-2xl font-bold text-[34px]">
+              <a href="#" className="relative cursor-pointer">
+                <i className="font-normal text-[#5943A5] z-2">... and more !</i>
+              </a>
+            </h1>
+            <img src="/images/uuid-4cbc27ba-dfca-41a0-8924-42aadae760f7.png" alt="More" />
+          </div>
+        </div>
+      </div>
+
+      <div className="my-6">
+        <div className="container mx-auto">
+          <div className="flex flex-col relative justify-center items-center md:flex-row bg-[#DBFFCC] rounded-[20px] mx-4 md:mx-0 overflow-hidden pt-8">
+            <div className="w-full md:w-1/2 px-2 py-2 md:p-4">
+              <div className="relative px-8 md:px-0">
+                <h1 className="text-2xl font-bold text-[34px]">
+                  <span className="text-[#5943A5]">You’ve got this. We’ve </span>
+                  <span className="relative">
+                    <i className="font-normal text-[#5943A5] z-10 relative">got you.</i>
+                    <img className="absolute top-[13px] right-0 z-0 w-full" src="/images/Vector 2.svg" alt="Vector 2" />
+                  </span>
+                </h1>
+              </div>
+              <button type="button" className="text-white bg-[#5943A5] hover:bg-[#F8845D] transition-all focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-7 py-4 text-center mt-12 mx-auto md:mx-0 flex flex-row gap-2 justify-center bottom-4">
+                <span>Care? Right This Way </span>
+                <img src="/images/Group 2349.png" alt="Arrow" />
+              </button>
+            </div>
+
+            <div className="w-full md:w-1/2 relative md:px-0 pt-4">
+              <img className="mx-auto" src="/images/Vector 3.svg" alt="Vector 3" />
+              <img className="mx-auto absolute bottom-0 w-[400px]" src="/images/6725559f65e92e9a71cddc105d37d087dc44f123.png" alt="Decorative" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

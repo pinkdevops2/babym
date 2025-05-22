@@ -1,6 +1,7 @@
 // app/layout.tsx or app/layout.js
 import { Lato, Baloo_2, Courgette } from "next/font/google";
 import "./globals.css";
+import "../styles/style.css";
 import Header from "@/common/Header";
 import Footer from "@/common/Footer";
 
