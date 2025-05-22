@@ -35,8 +35,15 @@ export default function Header() {
       </button>
     </div>
       {isOpen && (
-        <nav className="mt-4 bg-[#FFFBE6] border-t border-[#FF6F61] border-dashed">
-          <ul className="flex flex-col space-y-2 p-4">
+        <nav className="fixedNavbar mt-4 bg-[#FFFBE6] border-t border-[#FF6F61] border-dashed p-8">
+		<Image
+            src={logo}
+            alt="babyMD Logo"
+            width={120}
+            height={35}
+            className="object-contain mb-4"
+          />   
+          <ul className="flex flex-col space-y-2">
             <li>
               <Link href="/" className="text-[#4B3A8F] hover:text-[#FF6F61] block">
                 Home

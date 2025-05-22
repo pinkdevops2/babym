@@ -109,3 +109,13 @@ footer h3{
     top: 11px;
     right: 27px;
 }
+.fixedNavbar{
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 80%;
+    max-width: 300px;
+    margin-top: 0;
+    border-top: 0;
+}

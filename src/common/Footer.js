@@ -147,7 +147,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           
           <div className="flex space-x-5 fontSmallTem">
-		  <p>© {currentYear} babyMD ALL RIGHTS RESERVED</p>
+		  <p>© {currentYear} babyMD All Rights Reserved</p>
             <Link href="/privacy-policy" className="hover:text-[#FF6F61]">
               Privacy Policy
             </Link>
