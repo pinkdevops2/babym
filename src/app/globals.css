@@ -114,8 +114,8 @@ footer h3{
     left: 0;
     top: 0;
     bottom: 0;
-    width: 80%;
-    max-width: 300px;
+    width: 100%;
     margin-top: 0;
     border-top: 0;
+	transition:all linear 0.3s;
 }
