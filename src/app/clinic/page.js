@@ -145,7 +145,7 @@ export default function Clinic() {
         </div>
       </div>
 
-      <div className="my-6">
+      <div className="my-6 bg-[#FFF2EF]">
         <div className="container mx-auto">
           <div className="flex flex-col relative justify-center items-center md:flex-row bg-[#DBFFCC] rounded-[20px] mx-4 md:mx-0 overflow-hidden pt-8">
             <div className="w-full md:w-1/2 px-2 py-2 md:p-4">
