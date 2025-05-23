@@ -915,12 +915,12 @@ export default function Home() {
           {/* Testimonial Box */}
           <div className="bg-white rounded-lg p-4 md:p-5 mt-4 shadow-sm relative">
             <p className="text-sm leading-relaxed text-gray-800">
-              "We had a wonderful consultation with Dr Shivanga Bora at BabyMD
+              &quot;We had a wonderful consultation with Dr Shivanga Bora at BabyMD
               HSR Layout, for my son&#39;s wheezing issue. She was incredibly
               patient, listened to all our concerns, and provided a clear
               effective treatment plan. Her friendly approach and expertise made
               us feel reassured and confident in the care my son received. Highly
-              recommend her for pediatric care!"
+              recommend her for pediatric care!&quot;
             </p>
 
             {/* Author */}
