@@ -79,9 +79,9 @@ export default function Clinic() {
         </div>
       </div>
 
-      <img className="w-full relative z-0 top-[-5] bg-[#FFF2EF]" src="/images/Vector 141.svg" alt="Vector 141" />
+      <img className="w-full relative z-0 bg-[#FFF2EF]" src="/images/Vector 141.svg" alt="Vector 141" />
 
-      <div className="location-section bg-[#FFF2EF] py-4 relative top-[-5px]">
+      <div className="location-section bg-[#FFF2EF] py-4 relative">
         <div className="container mx-auto">
           <div className="flex flex-row gap-1 items-start">
             <div className="w-full md:w-1/2">
@@ -145,7 +145,7 @@ export default function Clinic() {
         </div>
       </div>
 
-      <div className="my-6 bg-[#FFF2EF]">
+      <div className="py-6 bg-[#FFF2EF] ">
         <div className="container mx-auto">
           <div className="flex flex-col relative justify-center items-center md:flex-row bg-[#DBFFCC] rounded-[20px] mx-4 md:mx-0 overflow-hidden pt-8">
             <div className="w-full md:w-1/2 px-2 py-2 md:p-4">
