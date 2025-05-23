@@ -1,4 +1,9 @@
+'use client'; // Ensure client-side rendering for useState and keen-slider
+
 import Image from "next/image";
+import React, { useState } from "react"; // React import included as per previous fix
+import { useKeenSlider } from "keen-slider/react"; // Import keen-slider hook
+import "keen-slider/keen-slider.min.css"; // Import keen-slider styles
 import i1 from "../app/assets/i1.png";
 import i1a from "../app/assets/i1.a.png";
 import Vector from "../app/assets/Vector.png";
@@ -27,53 +32,206 @@ import Premiumlayer from "../app/assets/Premiumlayer.png";
 import PremiumlayerImg from "../app/assets/PremiumlayerImg.png";
 import bee from "../app/assets/bee.png";
 import longspring from "../app/assets/longspring.png";
+import readyvectorImg from "../app/assets/readyvectorImg.png";
+import readyvector from "../app/assets/readyvector.png";
+import Nearbyclinic2 from "../app/assets/Nearbyclinic2.png";
+import Nearbyclinic3 from "../app/assets/Nearbyclinic3.png";
+import workshop2 from "../app/assets/workshop2.png";
+import workshop3 from "../app/assets/workshop3.png";
 
 export default function Home() {
+  // Clinic data
+  const clinics = [
+    {
+      name: "BabyMD, HSR Clinic",
+      address: "99, 11<sup>th</sup> Main Rd, Sector 5, Sector 6, HSR Layout, Bengaluru, Karnataka 560068",
+      hours: "Mon-Sat: 8AM - 1:30PM | 4PM - 8:30PM<br />Sundays: 9AM - 12PM",
+      image: Nearbyclinic,
+    },
+    {
+      name: "BabyMD, Koramangala Clinic",
+      address: "123, 5<sup>th</sup> Cross, Koramangala, Bengaluru, Karnataka 560034",
+      hours: "Mon-Fri: 9AM - 2PM | 3PM - 7PM<br />Sundays: 10AM - 1PM",
+      image: Nearbyclinic2,
+    },
+    {
+      name: "BabyMD, Whitefield Clinic",
+      address: "45, Whitefield Main Rd, Bengaluru, Karnataka 560066",
+      hours: "Mon-Sat: 7AM - 12PM | 5PM - 9PM<br />Sundays: 8AM - 11AM",
+      image: Nearbyclinic3,
+    },
+  ];
+
+  // Workshop data
+  const workshops = [
+    {
+      title: "Pediatric Care Online Workshop",
+      image: workshop,
+      date: "28 NOV 2025",
+      tags: ["PARENT'S KNOWLEDGE", "CHILD FEEDING CARE", "FEEDING CARE"],
+    },
+    {
+      title: "Behavioral Milestones Workshop",
+      image: workshop2,
+      date: "15 DEC 2025",
+      tags: ["BEHAVIORAL GROWTH", "PARENTING TIPS", "CHILD DEVELOPMENT"],
+    },
+    {
+      title: "Nutrition for Toddlers Workshop",
+      image: workshop3,
+      date: "10 JAN 2026",
+      tags: ["NUTRITION", "HEALTHY EATING", "PARENT'S KNOWLEDGE"],
+    },
+    {
+      title: "Behavioral Milestones Workshop",
+      image: workshop2,
+      date: "15 DEC 2025",
+      tags: ["BEHAVIORAL GROWTH", "PARENTING TIPS", "CHILD DEVELOPMENT"],
+    },
+  ];
+
+  // Case study data
+  const caseStudies = [
+    {
+      title: "Pediatric Care Online Workshop",
+      image: casestudy,
+      category: "Case Study",
+    },
+    {
+      title: "Behavioral Milestones Insights",
+      image: workshop2,
+      category: "Case Study",
+    },
+    {
+      title: "Nutrition for Toddlers Guide",
+      image: workshop3,
+      category: "Case Study",
+    },
+  ];
+
+  // Symptom buttons data (3 rows, each with 3 buttons)
+  const symptomRows = [
+    ["Lorem ipsum 1", "Lorem ipsum 2", "Lorem ipsum 3"],
+    ["Lorem ipsum 4", "Lorem ipsum 5", "Lorem ipsum 6"],
+    ["Lorem ipsum 7", "Lorem ipsum 8", "Lorem ipsum 9"],
+  ];
+
+  // Keen-slider setup for clinic carousel with free mode
+  const [clinicSliderRef, instanceRef] = useKeenSlider({
+    loop: true,
+    mode: "free",
+    slides: {
+      perView: 1,
+      spacing: 15,
+    },
+  });
+
+  // Keen-slider setup for workshop carousel with free mode
+  const [workshopSliderRef] = useKeenSlider({
+    loop: true,
+    mode: "centre",
+    slides: {
+      perView: 1.2,
+      spacing: 9,
+    },
+  });
+
+  // Keen-slider setup for case study carousel with free mode
+  const [caseStudySliderRef, caseStudyInstanceRef] = useKeenSlider({
+    loop: true,
+    mode: "centre",
+    slides: {
+      perView: 1,
+      spacing: 15,
+    },
+  });
+
+  // Keen-slider setup for each row of symptom buttons
+  const [symptomSliderRef1] = useKeenSlider({
+    mode: "free-snap",
+    slides: {
+      origin: "center",
+      perView: 2,
+      spacing: 15,
+    },
+  });
+
+  const [symptomSliderRef2] = useKeenSlider({
+    mode: "free-snap",
+    slides: {
+      origin: "center",
+      perView: 2,
+      spacing: 15,
+    },
+  });
+
+  const [symptomSliderRef3] = useKeenSlider({
+    mode: "free-snap",
+    slides: {
+      origin: "center",
+      perView: 2,
+      spacing: 15,
+    },
+  });
+
+  // State for tracking current slide for workshop and case study carousels
+  const [currentWorkshopSlide, setCurrentWorkshopSlide] = useState(0);
+  const [currentCaseStudySlide, setCurrentCaseStudySlide] = useState(0);
+
+  // Navigation functions for workshop carousel
+  const prevWorkshopSlide = () => {
+    setCurrentWorkshopSlide((prev) =>
+      prev === 0 ? workshops.length - 1 : prev - 1
+    );
+  };
+
+  const nextWorkshopSlide = () => {
+    setCurrentWorkshopSlide((prev) =>
+      prev === workshops.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  // Navigation functions for case study carousel
+  const prevCaseStudySlide = () => {
+    setCurrentCaseStudySlide((prev) =>
+      prev === 0 ? caseStudies.length - 1 : prev - 1
+    );
+    caseStudyInstanceRef.current?.prev();
+  };
+
+  const nextCaseStudySlide = () => {
+    setCurrentCaseStudySlide((prev) =>
+      prev === caseStudies.length - 1 ? 0 : prev + 1
+    );
+    caseStudyInstanceRef.current?.next();
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Main Content Container */}
       <div>
         {/* Purple Splash Frame */}
-        <div className="rounded-3xl p-8 md:p-12 mb-8 md:mb-12">
+        <div className="rounded-3xl p-8 md:p-12 mb-8 md:mb-12 ">
           <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4">
             Raising a baby <br /> takes a village,
           </h1>
 
-          <h2
-            style={{
-              fontFamily: "Baloo 2",
-              fontWeight: 500,
-              fontSize: "42px",
-              lineHeight: "38px",
-              letterSpacing: "0%",
-              color: "#5943A5",
-              fontStyle: "bold",
-            }}
-          >
+          <h2 className=" text-[#5943A5] font-bold text-[42px] leading-[38px]">
             welcome to <br />
           </h2>
           <h3
-            style={{
-              fontFamily: "Baloo 2",
-              fontWeight: 500,
-              fontSize: "42px",
-              lineHeight: "38px",
-              letterSpacing: "0%",
-              color: "#5943A5",
-              fontStyle: "italic",
-              marginBottom: "20px",
-            }}
+            className=" text-[#5943A5] font-italic text-[42px] leading-[38px] mb-[20px] font-baloo2"
           >
             yours
           </h3>
           {/* White Text Frame */}
           <div className="md:mt-7 mb-8">
             <p>
-              You deserve care that&apos;s as thoughtful as your
+              You deserve care that's as thoughtful as your
               <br />
               parenting. From cozy clinics to expert
               <br />
-              pediatricians and holistic support, we&apos;re here
+              pediatricians and holistic support, we're here
               <br />
               for every milestone, worry, and wonder.
             </p>
@@ -104,14 +262,14 @@ export default function Home() {
             className="absolute bottom-12 left-11 transform -translate-x-1/2"
           />
           <button className="absolute flex top-85 translate-x-9 items-center gap-2 bg-[#F9825F] hover:bg-[#f86f47] text-white font-bold py-3 px-10 rounded-full text-sm tracking-wide transition-transform duration-300 transform hover:scale-105">
-            WHERE IS MY SUPERDOC&apos;S?
-            <span className="text-white text-base col">⏵</span>
+            WHERE IS MY SUPERDOC'S?
+            <span className="text-white text-base col">âµ</span>
           </button>
         </div>
 
         <div className="max-w-xl text-center mx-auto mt-8 px-4">
           <h2 className="text-2xl font-bold text-gray-900">
-            But you don’t have to <br />
+            But you donâ€™t have to <br />
             <span className="text-purple-700">figure it out</span>{" "}
             <em className="italic text-purple-700">alone</em>
           </h2>
@@ -120,22 +278,22 @@ export default function Home() {
             Behind our every mark is a parent who found clarity and a child who
             felt better, safer, and happier. From midnight fevers to milestone
             check-ups, these stats reflect a story of care that goes beyond
-            treatment — it’s about peace of mind and trust.
+            treatment â€” itâ€™s about peace of mind and trust.
           </p>
         </div>
 
         <div className="w-full mt-8 mb-4 flex flex-col items-center space-y-4">
-          <div className="mb-10">
+          <div className="mb-8">
             <Image
               width={80}
               height={50}
               sizes="80vw"
               src={bee}
               alt="Layer 1"
-              className="absolute left-60 top-270 mt-10 mb-10 "
+              className="absolute left-70 top-270 mt-10 mb-10 "
             />
           </div>
-
+          
           {/* Circular Container 1 */}
           <div className="relative w-80 h-[300px] md:mb-12">
             <Image
@@ -154,7 +312,10 @@ export default function Home() {
               className="absolute bottom-0 left-1/2 transform -translate-x-1/2"
             />
           </div>
-
+          <div>
+           <h1 className="text-[#5943A5] text-[52px] font-bold absolute left-45 top-310 z-5 ">5000+</h1>
+          <h1 className="text-[#5943A5]  absolute left-50 top-325 z-5 ">Happy <br />Families <br /> and <br />Counting </h1>
+          </div>
           <div className="relative w-80 h-[300px] md:mb-12">
             <Image
               width={800}
@@ -171,6 +332,12 @@ export default function Home() {
               alt="Layer 2"
               className="absolute bottom-0 left-1/2 transform -translate-x-1/2"
             />
+            <div className="">
+                <h1 className="text-[#E3B200] relative  text-[64px] font-bold pt-9 ps-42  right-5  ">4.9+</h1>
+                <h2 className="text-[#E3B200] relative  text-[22px] pt-0 pl-46  right-5 ">
+                        Google Rating
+                      </h2>
+            </div>
           </div>
 
           <div className="relative w-80 h-[300px] md:mb-12">
@@ -189,6 +356,10 @@ export default function Home() {
               alt="Layer 2"
               className="absolute bottom-0 left-1/2 transform -translate-x-1/2"
             />
+            <div>
+              <h1 className="text-[#269BD9] text-[55px] relative font-bold px-33 py-9">2500+</h1>
+              <h1 className="text-[#269BD9] text-[13px] relative  px-35  ">Glowing Reviews </h1>
+            </div>
           </div>
 
           <div className="relative w-80 h-[300px] md:mb-12">
@@ -207,30 +378,32 @@ export default function Home() {
               alt="Layer 2"
               className="absolute bottom-0 left-1/2 transform -translate-x-1/2"
             />
+            <h1 className="text-[#ED750F] text-[52px] relative font-bold px-33 py-7 ">30+</h1>
+            <h1 className="text-[#ED750F] text-[15px] relative px-37 left-1 bottom-7 whitespace-nowrap">Years of Peaditric <br/> Wisdom </h1>
           </div>
         </div>
 
         {/* Every Child is a Miracle Section */}
         <div className="bg-[#ebf9be64] rounded-3xl p-8 md:p-12 mb-8 md:mb-12">
           <h2 className="text-2xl md:text-3xl font-bold leading-tight mb-4">
-            Every child is a miracle — <br /> a unique story{" "}
+            Every child is a miracle â€” <br /> a unique story{" "}
             <span className="text-[#4B3A8F]">
-              we’re here <br />
+              weâ€™re here <br />
               to care for
             </span>
           </h2>
           <p className="text-lg md:text-xl leading-relaxed font-medium mb-4">
-            Each moment of your child’s growth is worth celebrating, from first
-            steps to first words. But parenting isn’t always magical, with
+            Each moment of your childâ€™s growth is worth celebrating, from first
+            steps to first words. But parenting isnâ€™t always magical, with
             midnight fevers, stubborn coughs, and moments of doubt.
           </p>
           <p className="text-lg md:text-xl leading-relaxed font-medium mb-4">
-            That’s where we come in: your trusted partner in ensuring nothing
-            stands in the way of your child’s health and well-being. We go beyond
+            Thatâ€™s where we come in: your trusted partner in ensuring nothing
+            stands in the way of your childâ€™s health and well-being. We go beyond
             treating symptoms, offering holistic care that nurtures their
             physical, emotional, mental, and social development. From
             personalized growth assessments to making every clinic visit a
-            positive experience, we’re here with expert care, joy, and
+            positive experience, weâ€™re here with expert care, joy, and
             compassion.
           </p>
         </div>
@@ -308,21 +481,21 @@ export default function Home() {
           </div>
 
           <h2 className="text-2xl md:text-3xl font-bold leading-tight mb-4">
-            We’re here for the{" "}
+            Weâ€™re here for the{" "}
             <span className="text-[#4B3A8F]">
               giggles, sniffles, and everything in{" "}
               <span className="italic font-light"> between!</span>
             </span>
           </h2>
           <p className="">
-            Some days you’re celebrating first steps. <br /> Other days, you’re
-            worried about a fever at 2 AM. We are here for it all. Whether it’s a
+            Some days youâ€™re celebrating first steps. <br /> Other days, youâ€™re
+            worried about a fever at 2 AM. We are here for it all. Whether itâ€™s a
             quick check-up, a vaccine visit, or something that needs a deeper
             look, we offer the kind of care that listens, explains, and walks the
             path with you.
           </p>
           <h3 className="md:text-2xl mb-13">
-            Here’s how we support you and your child — every step of the way:
+            Hereâ€™s how we support you and your child â€” every step of the way:
           </h3>
           <div className="relative z-10 -mt-12 max-w-md mx-auto">
             <div className="rounded-t-2xl bg-white overflow-hidden">
@@ -365,7 +538,7 @@ export default function Home() {
                 </summary>
                 <div className="p-4 bg-[#E6D6FA] text-sm text-gray-700 leading-relaxed">
                   Comprehensive health check-ups and consultations for your
-                  child&apos;s everyday needs.
+                  child's everyday needs.
                 </div>
               </details>
 
@@ -493,7 +666,7 @@ export default function Home() {
                 <div className="p-4 bg-[#D6F4FA] text-sm text-gray-700 leading-relaxed">
                   Our developmental pediatricians and certified therapists go
                   beyond symptoms to create personalized plans that address your
-                  little one&apos;s unique needs — from speech delays to behavioral
+                  little one's unique needs â€” from speech delays to behavioral
                   challenges.
                 </div>
               </details>
@@ -510,41 +683,50 @@ export default function Home() {
           </h2>
           <p>
             Because every child is a miracle, and every concern deserves real
-            attention. Whether it’s just a feeling, your tiny tot’s in a fever, a
-            delay, or just a feeling, we’re here with expert eyes, kind hearts,
+            attention. Whether itâ€™s just a feeling, your tiny totâ€™s in a fever, a
+            delay, or just a feeling, weâ€™re here with expert eyes, kind hearts,
             and real answers.
           </p>
-          <div className="grid grid-cols-3 mt-4 sm:grid-cols-4 gap-2">
-            <button className="bg-[#FBE38F] text-[#4B3A8F]  rounded-full px-2 py-2 hover:bg-[#F6E8C3] transition-all duration-300">
-              Lorem ipsum
-            </button>
-            <button className="bg-[#FBE38F] text-[#4B3A8F]  rounded-full px-2 py-2 hover:bg-[#F6E8C3] transition-all duration-300">
-              Lorem ipsum
-            </button>
-            <button className="bg-[#FBE38F] text-[#4B3A8F]  rounded-full px-2 py-2 hover:bg-[#F6E8C3] transition-all duration-300">
-              Lorem ipsum
-            </button>
-            <button className="bg-[#FBE38F] text-[#4B3A8F]  rounded-full px-2 py-2 hover:bg-[#F6E8C3] transition-all duration-300">
-              Lorem ipsum
-            </button>
-            <button className="bg-[#FBE38F] text-[#4B3A8F]  rounded-full px-2 py-2 hover:bg-[#F6E8C3] transition-all duration-300">
-              Lorem ipsum
-            </button>
-            <button className="bg-[#FBE38F] text-[#4B3A8F]  rounded-full px-2 py-2 hover:bg-[#F6E8C3] transition-all duration-300">
-              Lorem ipsum
-            </button>
-            <button className="bg-[#FBE38F] text-[#4B3A8F]  rounded-full px-2 py-2 hover:bg-[#F6E8C3] transition-all duration-300">
-              Lorem ipsum
-            </button>
-            <button className="bg-[#FBE38F] text-[#4B3A8F]  rounded-full px-2 py-2 hover:bg-[#F6E8C3] transition-all duration-300">
-              Lorem ipsum
-            </button>
-            <button className="bg-[#FBE38F] text-[#4B3A8F]  rounded-full px-2 py-2 hover:bg-[#F6E8C3] transition-all duration-300">
-              Lorem ipsum
-            </button>
-            
-            
-            
+          {/* Symptom Buttons Carousels (One for Each Row) */}
+          <div className="space-y-4 mt-4">
+            {/* Row 1 Carousel */}
+            <div className="max-w-md mx-auto rounded-2xl overflow-hidden bg-white p-1">
+              <div ref={symptomSliderRef1} className="keen-slider">
+                {symptomRows[0].map((buttonText, index) => (
+                  <div key={index} className="keen-slider__slide">
+                    <button className="bg-[#FBE38F] text-[#4B3A8F] rounded-full px-4 py-2 w-full hover:bg-[#F6E8C3] transition-all duration-300">
+                      {buttonText}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Row 2 Carousel */}
+            <div className="max-w-md mx-auto rounded-2xl overflow-hidden bg-white p-1">
+              <div ref={symptomSliderRef2} className="keen-slider">
+                {symptomRows[1].map((buttonText, index) => (
+                  <div key={index} className="keen-slider__slide">
+                    <button className="bg-[#FBE38F] text-[#4B3A8F] rounded-full px-4 py-2 w-full hover:bg-[#F6E8C3] transition-all duration-300">
+                      {buttonText}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Row 3 Carousel */}
+            <div className="max-w-md mx-auto rounded-2xl overflow-hidden bg-white p-1">
+              <div ref={symptomSliderRef3} className="keen-slider">
+                {symptomRows[2].map((buttonText, index) => (
+                  <div key={index} className="keen-slider__slide">
+                    <button className="bg-[#FBE38F] text-[#4B3A8F] rounded-full px-4 py-2 w-full hover:bg-[#F6E8C3] transition-all duration-300">
+                      {buttonText}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -553,17 +735,17 @@ export default function Home() {
           <div className="max-w-2xl">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
               Curious about your{" "}
-              <span className="text-[#4B3A8F]">child&apos;s growth?</span>
+              <span className="text-[#4B3A8F]">child's growth?</span>
               <br />
-              <span className="text-[#4B3A8F]">Let&apos;s take a look </span>
+              <span className="text-[#4B3A8F]">Let's take a look </span>
               <span className="text-[#4B3A8F] italic">together</span>
             </h2>
             <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              You&apos;re the expert when it comes to your child — but sometimes, it
+              You're the expert when it comes to your child â€” but sometimes, it
               helps to have an extra pair of professional eyes. Our free, online{" "}
               <span className="font-semibold">milestone assessment tool</span>{" "}
               lets you easily track their development, from physical growth to
-              behavioral needs. In just a few simple steps, you&apos;ll get the
+              behavioral needs. In just a few simple steps, you'll get the
               clarity you need to understand where they stand and feel confident
               in their progress.
             </p>
@@ -603,14 +785,14 @@ export default function Home() {
               <span className="text-[#4B3A8F] italic">the corner</span>
             </h2>
             <p className="text-lg leading-relaxed mb-6">
-              Late-night worries or last-minute scrambles shouldn&apos;t mean a long
-              drive or endless queues. We&apos;re all about making care easy and
+              Late-night worries or last-minute scrambles shouldn't mean a long
+              drive or endless queues. We're all about making care easy and
               accessible, so you can feel confident even on your toughest days.
-              That&apos;s why our clinics are right in your neighborhood — cozy,
+              That's why our clinics are right in your neighborhood â€” cozy,
               colourful, and designed with your little one in mind.
             </p>
             <p className="text-lg mb-8">
-              Call us, book online, or just walk in, we&apos;ll be ready.
+              Call us, book online, or just walk in, we'll be ready.
             </p>
             <div className="relative">
               <input
@@ -637,85 +819,79 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Clinic Carousel Section */}
+        {/* Clinic Carousel Section with Keen-Slider Free Mode */}
         <div className="relative max-w-md mx-auto rounded-2xl overflow-hidden bg-white p-4">
-          {/* Image Frame */}
-          <div className="relative w-full h-[280px] mb-6 rounded-xl overflow-hidden">
-            <Image
-              width={500}
-              height={300}
-              src={Nearbyclinic}
-              alt="Clinic Interior"
-              className="w-full h-full object-cover"
-            />
+          <div ref={clinicSliderRef} className="keen-slider">
+            {clinics.map((clinic, index) => (
+              <div key={index} className="keen-slider__slide">
+                <div className="relative w-full h-[300px] mb-6 rounded-xl overflow-hidden">
+                  <Image
+                    width={350}
+                    height={300}
+                    src={clinic.image}
+                    alt={clinic.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="text-center mb-4 px-8">
+                  <h3 className="text-xl font-bold text-gray-800 mb-1 font-baloo2">
+                    {clinic.name}
+                  </h3>
+                  <p
+                    className="text-sm text-gray-600 mb-2 font-baloo2"
+                    dangerouslySetInnerHTML={{ __html: clinic.address }}
+                  />
+                  <p
+                    className="text-sm text-gray-600 font-baloo2"
+                    dangerouslySetInnerHTML={{ __html: clinic.hours }}
+                  />
+                </div>
+              </div>
+            ))}
           </div>
-
-          {/* Clinic Address Content with Navigation Arrows */}
-          <div className="relative text-center mb-4 px-8">
-            {/* Left Navigation Arrow */}
-            <button className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:bg-gray-50 transition-all duration-300">
-              <svg
-                className="w-4 h-4 text-yellow-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-
-            <h3 className="text-xl font-bold text-gray-800 mb-1">
-              BabyMD, HSR Clinic
-            </h3>
-            <p className="text-sm text-gray-600 mb-2">
-              99, 11<sup>th</sup> Main Rd, Sector 5, Sector 6,
-              <br />
-              HSR Layout, Bengaluru, Karnataka 560068
-            </p>
-            <p className="text-sm text-gray-600">
-              Mon-Sat: 8AM - 1:30PM | 4PM - 8:30PM
-              <br />
-              Sundays: 9AM - 12PM
-            </p>
-
-            {/* Right Navigation Arrow */}
-            <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:bg-gray-50 transition-all duration-300">
-              <svg
-                className="w-4 h-4 text-yellow-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l-7 7 7 7"
-                />
-              </svg>
-            </button>
-          </div>
-
-          {/* Carousel Indicators */}
-          <div className="flex justify-center gap-2 mt-4">
-            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
-            <div className="w-2 h-2 rounded-full bg-orange-500"></div>
-            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
-            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
-            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
-            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
-          </div>
+          {/* Navigation Arrows for Clinic Carousel */}
+          <button
+            onClick={() => instanceRef.current?.prev()}
+            className="absolute left-4 top-100 transform -translate-y-1/2 bg-[#F4DF76] rounded-full shadow-md"
+          >
+            <svg
+              className="w-6 h-6 text-gray-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+          <button
+            onClick={() => instanceRef.current?.next()}
+            className="absolute right-4 top-100 transform -translate-y-1/2 bg-[#F4DF76]  rounded-full shadow-md"
+          >
+            <svg
+              className="w-6 h-6 text-gray-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
         </div>
 
         <div className="flex justify-center items-center">
           <button className="flex items-center bg-[#F9825F] hover:bg-[#f86f47] text-white font-bold py-3 px-10 rounded-full text-sm tracking-wide transition-transform duration-300 transform hover:scale-105">
             VISIT YOUR NEAREST BABYMD
-            <span className="text-white text-base ml-2">⏵</span>
+            <span className="text-white text-base ml-2">âµ</span>
           </button>
         </div>
 
@@ -723,7 +899,7 @@ export default function Home() {
         <div className="bg-[#DFF1FF] rounded-t-3xl p-6 md:p-8 text-[#4B3A8F] relative">
           {/* Heading */}
           <h2 className="text-xl md:text-2xl font-bold mb-2">
-            Don&apos;t just <span className="text-purple-600">take</span>
+            Don't just <span className="text-purple-600">take</span>
             <br />
             <span className="text-purple-600 italic font-medium">
               our word
@@ -739,17 +915,17 @@ export default function Home() {
           {/* Testimonial Box */}
           <div className="bg-white rounded-lg p-4 md:p-5 mt-4 shadow-sm relative">
             <p className="text-sm leading-relaxed text-gray-800">
-              &quot;We had a wonderful consultation with Dr Shivanga Bora at BabyMD
-              HSR Layout, for my son&apos;s wheezing issue. She was incredibly
+              "We had a wonderful consultation with Dr Shivanga Bora at BabyMD
+              HSR Layout, for my son's wheezing issue. She was incredibly
               patient, listened to all our concerns, and provided a clear
               effective treatment plan. Her friendly approach and expertise made
               us feel reassured and confident in the care my son received. Highly
-              recommend her for pediatric care!&quot;
+              recommend her for pediatric care!"
             </p>
 
             {/* Author */}
             <div className="mt-4 flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden">
+              <div className="w-8 h-8 rounded-full bg-gray-200 Overflow-hidden">
                 {/* Profile image would go here */}
               </div>
               <div className="text-xs">
@@ -762,14 +938,14 @@ export default function Home() {
           {/* See Video Link */}
           <div className="flex items-center justify-start mt-3 mb-6">
             <button className="text-xs font-semibold text-[#4B3A8F] flex items-center gap-1">
-              SEE VIDEO <span className="ml-1 text-xs">▶</span>
+              SEE VIDEO <span className="ml-1 text-xs">â–¶</span>
             </button>
           </div>
 
           {/* CTA Button */}
           <div className="mt-0">
             <button className="bg-[#4B3A8F] text-white font-semibold py-2 px-5 rounded-full text-xs flex items-center gap-2">
-              SEE MORE REVIEWS <span className="ml-1 text-xs">▶</span>
+              SEE MORE REVIEWS <span className="ml-1 text-xs">â–¶</span>
             </button>
           </div>
         </div>
@@ -790,80 +966,76 @@ export default function Home() {
             </h2>
             <p className="text-sm text-black mt-2 leading-tight">
               Ever wished parenting came with a guidebook? From picky eating to
-              tantrums, we know you&apos;ve got questions. Join our expert-led
+              tantrums, we know you've got questions. Join our expert-led
               webinars to get practical tips and expert answers to feel confident
               and supported in your parenting journey.
             </p>
           </div>
 
-          {/* Workshop Title */}
-          <div className="text-[#6A58AD] font-semibold text-sm">
-            Pediatric Care Online <br /> Workshop
-          </div>
-
-          {/* Workshop Cards - Side Scrollable */}
-          <div className="relative">
-            {/* Workshop Card */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-sm">
-              {/* Card Content */}
-              <div className="relative">
-                {/* Workshop Image with tags inside */}
-                <div className="relative h-48 w-80">
-                  <Image
-                    width={300}
-                    height={192}
-                    src={workshop}
-                    alt="Baby eating"
-                    className="w-full h-full object-cover"
-                  />
-
-                  {/* Date Badge */}
-                  <div className="absolute top-0 right-2 bg-[#3810c8] text-white text-xs p-1 rounded-md font-bold text-center w-8">
-                    <span className="text-base">28</span>
-                    <br />
-                    <span className="text-[9px]">NOV 2025</span>
-                  </div>
-
-                  {/* Tags positioned INSIDE the image at the bottom */}
-                  <div className="absolute bottom-2 left-0 right-0 flex flex-wrap gap-1 px-2">
-                    <span className="border border-white bg-opacity-20 backdrop-blur-sm text-white px-2 py-0.5 rounded-full text-[10px] font-medium">
-                      PARENT&apos;S KNOWLEDGE
-                    </span>
-                    <span className="border border-white bg-opacity-20 backdrop-blur-sm text-white px-2 py-0.5 rounded-full text-[10px] font-medium">
-                      CHILD FEEDING CARE
-                    </span>
-                    <span className="border border-white bg-opacity-20 backdrop-blur-sm text-white px-2 py-0.5 rounded-full text-[10px] font-medium">
-                      FEEDING CARE
-                    </span>
-                    <span className="border border-white bg-opacity-20 backdrop-blur-sm text-white px-2 py-0.5 rounded-full text-[10px] font-medium">
-                      PARENT&apos;S KNOWLEDGE
-                    </span>
+          {/* Workshop Carousel with Keen-Slider Free Mode */}
+          <div className="relative max-w-md mx-auto rounded-2xl overflow-hidden bg-white p-4">
+            <div ref={workshopSliderRef} className="keen-slider">
+              {workshops.map((workshop, index) => (
+                <div key={index} className="keen-slider__slide">
+                  <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+                    <div className="text-center mb-4 px-8 pt-4">
+                      <h3 className="text-xl font-bold text-gray-800 mb-1 font-baloo2">
+                        {workshop.title}
+                      </h3>
+                    </div>
+                    <div className="relative h-[192px] w-full">
+                      <Image
+                        width={350}
+                        height={192}
+                        src={workshop.image}
+                        alt={workshop.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-0 right-2 bg-[#3810c8] text-white text-xs p-1 rounded-md font-bold text-center w-8">
+                        <span className="text-base">{workshop.date.split(" ")[0]}</span>
+                        <br />
+                        <span className="text-[9px]">{workshop.date.split(" ").slice(1).join(" ")}</span>
+                      </div>
+                      <div className="absolute bottom-2 left-0 right-0 flex flex-wrap gap-1 px-2">
+                        {workshop.tags.map((tag, tagIndex) => (
+                          <span
+                            key={tagIndex}
+                            className="border border-white bg-opacity-20 backdrop-blur-sm text-white px-2 py-0.5 rounded-full text-[10px] font-medium"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
+              ))}
+            </div>
+            {/* Navigation Arrows and Indicators for Workshop Carousel */}
+            <div className="flex justify-between items-center mt-4">
+              <div className="flex space-x-2 pl-32">
+                {workshops.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-2 h-2 rounded-full ${
+                      currentWorkshopSlide === index ? "bg-[#4B3A8F]" : "bg-gray-300"
+                    }`}
+                  />
+                ))}
               </div>
             </div>
-
-            {/* Additional workshop card visible at edge (for scrolling effect) */}
-            <div className="absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-[#F8F6FB] to-transparent opacity-70"></div>
-          </div>
-
-          {/* Dots/Indicators */}
-          <div className="flex justify-center gap-1 pt-1">
-            <span className="h-2 w-2 rounded-full bg-[#F47B54]"></span>
-            <span className="h-2 w-2 rounded-full bg-[#F4CDBD]"></span>
-            <span className="h-2 w-2 rounded-full bg-[#F4CDBD]"></span>
-            <span className="h-2 w-2 rounded-full bg-[#F4CDBD]"></span>
           </div>
 
           {/* CTA Button */}
           <div className="flex justify-center pt-1">
             <button className="bg-[#F47B54] text-white font-bold text-sm py-2 px-5 rounded-full flex items-center gap-1">
               SAVE YOUR SPOT
-              <span className="text-xs ml-1">▶</span>
+              <span className="text-xs ml-1">â–¶</span>
             </button>
           </div>
         </div>
 
+        {/* Parenting Unplugged Section */}
         <div className="bg-[#FDF8DB] p-6 rounded-t-3xl space-y-8">
           {/* Heading */}
           <div className="text-[#231F20]">
@@ -875,45 +1047,78 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-sm mt-2 text-[#231F20]">
-              Juggling work, family, and endless advice on parenting? We’ve got
+              Juggling work, family, and endless advice on parenting? Weâ€™ve got
               you covered. Delve into our expert insights, practical tips, and
-              the latest updates — curated exclusively for you.
+              the latest updates â€” curated exclusively for you.
             </p>
           </div>
 
-          {/* Article Card */}
-          <div className="bg-[#FDF8DB] rounded-xl p-2 w-full max-w-xs">
-            <div className="relative right-8.5 w-100 h-[190px] md:mb-12">
-              <Image
-                width={310}
-                height={300}
-                sizes="100vw"
-                src={casestudy}
-                alt="Layer 1"
-                className="absolute bottom-1 left-14 -full"
-              />
+          {/* Case Study Carousel with Keen-Slider Free Mode */}
+          <div className="relative max-w-md mx-auto rounded-2xl overflow-hidden bg-[#FDF8DB] p-4">
+            <div ref={caseStudySliderRef} className="keen-slider">
+              {caseStudies.map((caseStudy, index) => (
+                <div key={index} className="keen-slider__slide">
+                  <div className="bg-[#FDF8DB] rounded-xl p-2 w-full max-w-xs mx-auto">
+                    <div className="relative h-[190px]">
+                      <Image
+                        width={350}
+                        height={190}
+                        sizes="100vw"
+                        src={caseStudy.image}
+                        alt={caseStudy.title}
+                        className="absolute bottom-1 left-1 h-full object-cover"
+                      />
+                    </div>
+                    <div className="mt-3">
+                      <p className="text-[10px] font-bold text-[#EB5A44] uppercase font-baloo2">
+                        {caseStudy.category}
+                      </p>
+                      <p className="font-semibold text-sm text-[#231F20] font-baloo2">
+                        {caseStudy.title}
+                      </p>
+                    </div>
+                    <button
+                      onClick={nextCaseStudySlide}
+                      className="mt-2 bg-[#F4DF76] rounded-full shadow-md p-2"
+                    >
+                      <svg
+                        className="w-6 h-6 text-gray-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
-
-            {/* Category & Title */}
-            <div className="mt-3">
-              <p className="text-[10px] font-bold text-[#EB5A44] uppercase">
-                Case Study
-              </p>
-              <p className="font-semibold text-sm text-[#231F20]">
-                Pediatric Care Online <br />
-                Workshop
-              </p>
+            {/* Indicators for Case Study Carousel */}
+            <div className="flex justify-center items-center mt-4">
+              <div className="flex space-x-2">
+                {caseStudies.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-2 h-2 rounded-full ${
+                      currentCaseStudySlide === index ? "bg-[#4B3A8F]" : "bg-gray-300"
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
-
-            {/* Arrow */}
-            <div className="mt-2 text-[#EB5A44] text-xl">→</div>
           </div>
 
           {/* CTA Button */}
           <div className="flex justify-center">
             <button className="bg-[#4B3A8F] text-white text-sm font-semibold py-3 px-6 rounded-full flex items-center gap-2 hover:scale-105 transition">
               STAY IN THE KNOW
-              <span className="text-base">⏵</span>
+              <span className="text-base">âµ</span>
             </button>
           </div>
         </div>
@@ -926,11 +1131,11 @@ export default function Home() {
               fontSize: "28px",
               lineHeight: "30px",
             }}
-          >
+        >
             <h2 className="text-lg font-bold leading-snug">
               Because <span className="text-white">Parenting</span>
               <br />
-              Shouldn’t Cost A <span className="italic font-normal">
+              Shouldnâ€™t Cost A <span className="italic font-normal">
                 <br />
                 Fortune
               </span>
@@ -943,13 +1148,13 @@ export default function Home() {
                 lineHeight: "22px",
               }}
             >
-              Midnight fevers, last-minute travel checkups, vaccine days — we
+              Midnight fevers, last-minute travel checkups, vaccine days â€” we
               know parenting comes with curveballs. Our membership plans are here
               to make expert care simpler, smoother, and more affordable all year
               round.
             </p>
             <p className="text-sm mt-2">
-              Choose from our plans and save up to ₹10,000 annually.
+              Choose from our plans and save up to â‚¹10,000 annually.
             </p>
           </div>
 
@@ -967,16 +1172,16 @@ export default function Home() {
                 borderBottomLeftRadius: "15px",
               }}
             >
-              <div className="text-yellow-500 text-2xl">🏅</div>
+              <div className="text-yellow-500 text-2xl">ðŸ…</div>
               <h3 className="font-semibold text-sm">Gold Membership</h3>
               <p className="text-xs">Save more on everyday care</p>
               <p className="text-[#009A67] font-bold text-lg mt-1">
-                ₹699<span className="text-xs">/year</span>
+                â‚¹699<span className="text-xs">/year</span>
               </p>
               <ul className="text-xs list-disc list-inside text-[#4D4D4D] space-y-1 mt-2">
                 <li>10% off consults</li>
                 <li>5% off other services</li>
-                <li>₹700 gift card</li>
+                <li>â‚¹700 gift card</li>
               </ul>
             </div>
 
@@ -992,18 +1197,18 @@ export default function Home() {
                 borderBottomLeftRadius: "15px",
               }}
             >
-              <div className="text-[#6C40B5] text-2xl">💎</div>
-                <h3 className="font-semibold text-sm">Platinum Membership</h3>
-                <p className="text-xs">Our best value for growing families</p>
-                <p className="text-[#009A67] font-bold text-lg mt-1">
-                  ₹999<span className="text-xs">/year</span>
-                </p>
-                <ul className="text-xs list-disc list-inside text-[#4D4D4D] space-y-1 mt-2">
-                  <li>15% off consults</li>
-                  <li>10% off all services</li>
-                  <li>₹1000 gift card</li>
-                </ul>
-              </div>
+              <div className="text-[#6C40B5] text-2xl">ðŸ’Ž</div>
+              <h3 className="font-semibold text-sm">Platinum Membership</h3>
+              <p className="text-xs">Our best value for growing families</p>
+              <p className="text-[#009A67] font-bold text-lg mt-1">
+                â‚¹999<span className="text-xs">/year</span>
+              </p>
+              <ul className="text-xs list-disc list-inside text-[#4D4D4D] space-y-1 mt-2">
+                <li>15% off consults</li>
+                <li>10% off all services</li>
+                <li>â‚¹1000 gift card</li>
+              </ul>
+            </div>
           </div>
 
           {/* Note */}
@@ -1012,21 +1217,21 @@ export default function Home() {
             style={{
               fontWeight: "400",
               fontSize: "16px",
-              lineHeight: "22px",      
+              lineHeight: "22px",
               fontFamily: "Lato, sans-serif"
             }}
           >
             With both plans, you get priority booking at all BabyMD clinics and
             online consults. Plus, a dedicated Care Manager to handle
-            appointments, reminders, and check-ins — so you can focus on what
+            appointments, reminders, and check-ins â€” so you can focus on what
             matters most.
           </p>
 
           {/* CTA Button */}
-          <div className="flex justify-center relative mt-5 mb-4 z-15">
+          <div className="flex justify-center relative bottom-[-40px] z-15">
             <button className="bg-[#4B3A8F] text-white text-sm font-semibold py-3 px-6 rounded-full flex items-center gap-2 hover:scale-105 transition">
               PICK A PLAN, START SAVING
-              <span className="text-base">⏵</span>
+              <span className="text-base">âµ</span>
             </button>
           </div>
 
@@ -1036,56 +1241,53 @@ export default function Home() {
               src={Premiumlayer}
               alt="Background shape"
               className=" top-205  right-1.5 absolute"
-              
             />
             <Image
               src={PremiumlayerImg}
-              alt="Doctor and Child"   
+              alt="Doctor and Child"
               width={320}
-              height={200}         
-             
+              height={200}
               className="absolute transform -translate-y-80 mt-10 "
             />
           </div>
         </div>
 
-        <div className="bg-[#6C40B5] text-white rounded-2xl p-5 max-w-xs mx-auto space-y-4">
+        <div className="relative bg-[#6C40B5] text-white rounded-2xl mt-2 p-6 max-w-xs mx-auto space-y-2">
           {/* Heading */}
-          <h2
-            className="text-lg font-bold leading-snug mt"
-            style={{
-              fontWeight: "400",
-              fontSize: "28px",
-              lineHeight: "30px",
-              letterSpacing: "0%",
-              verticalAlign: "middle",
-            }}
-          >
-            Whenever you need us, we’re here — with care{" "}
-            <span className="italic font-normal text-white px-1 rounded">
-              that’s ready
+          <h2 className="font-baloo2 text-2xl font-normal leading-8">
+            Whenever you need us, weâ€™re here â€” with care{" "}
+            <span className="italic font-light text-white px-1 rounded">
+              thatâ€™s ready
             </span>
           </h2>
 
           {/* Description */}
-          <p
-            className="text-sm leading-snug"
-            style={{
-              fontSize: "16px",
-              lineHeight: "22px",
-              letterSpacing: "0%",
-              verticalAlign: "middle",
-            }}
-          >
-            Babies don’t come with instructions, but we do. Whether it’s a
-            routine check-up, a fever that won’t quit, or just a little peace of
-            mind — just pick a time, choose a clinic, and we’ll handle the rest.
+          <p className="text-base leading-6 font-lato">
+            Babies donâ€™t come with instructions, but we do. Whether itâ€™s a routine
+            check-up, a fever that wonâ€™t quit, or just a little peace of mind â€” just
+            pick a time, choose a clinic, and weâ€™ll handle the rest.
           </p>
 
-          {/* Button */}
-          <button className="bg-[#F9EEB6] text-[#231F20] text-sm font-semibold py-3 px-4 rounded-full w-full flex justify-center items-center gap-2 hover:scale-105 transition">
-            BOOK YOUR APPOINTMENT <span className="text-base">⏵</span>
-          </button>
+          {/* Overlapping Images */}
+          <div className="relative bottom-[-31px] h-62">
+            <Image
+              src={readyvector}
+              alt="Background shape"
+              className="absolute top-0 right-2.5 w-58 h-auto"
+            />
+            <Image
+              src={readyvectorImg}
+              alt="Family"
+              width={460}
+              height={250}
+              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-65 max-w-[460px] h-auto"
+            />
+          </div>
+          <div className="flex right-9 absolute bottom-[20px] z-20 ">
+            <button className="bg-[#F9EEB6] text-[#231F20] text-sm font-semibold py-3 px-4 rounded-full w-full flex justify-center items-center gap-2 hover:scale-105 transition">
+              BOOK YOUR APPOINTMENT <span className="text-base">âµ</span>
+            </button>
+          </div>
         </div>
 
         {/* New Section: Some of the Questions Parents Really Ask Us */}
@@ -1143,8 +1345,8 @@ export default function Home() {
             }}
           >
             Got questions about midnight fevers, first foods, routine vaccines,
-            tricky rashes, or curious growth spurts? We’re here to guide you
-            through every question — no judgment, just answers you can rely on.
+            tricky rashes, or curious growth spurts? Weâ€™re here to guide you
+            through every question â€” no judgment, just answers you can rely on.
           </p>
           <div className="space-y-4">
             {/* Question 1 */}
@@ -1414,7 +1616,7 @@ export default function Home() {
                   style={{ fontSize: "14px", lineHeight: "18px" }}
                 >
                   No, these therapies are non-invasive and absolutely safe for
-                  your childs.
+                  your child.
                 </p>
               </div>
             </details>

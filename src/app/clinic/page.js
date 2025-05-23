@@ -1,6 +1,53 @@
 'use client';
 import Image from 'next/image';
 export default function Clinic() {
+	const clinics = [
+  {
+    image: "/images/f599ef5c0bc6b9e548520dd4c3c29270435d932e.jpg",
+    title: "BabyMD – Hosa Road",
+    location: "locate clinic",
+    hours: [
+      { days: "Monday to Saturday", time: "8 AM to 1:30 PM | 4 PM to 8:30 PM" },
+      { days: "Sunday", time: "9 AM to 12 PM" },
+    ],
+  },
+  {
+    image: "/images/351beb004171eecf5fa8fcabcad24c88067fc6d4.jpg",
+    title: "BabyMD – Whitefield",
+    location: "locate clinic",
+    hours: [
+      { days: "Monday to Saturday", time: " 8 AM to 1:30 PM | 4 PM to 8:30 PM" },
+      { days: "Sunday", time: " 9 AM to 12 PM" },
+    ],
+  },
+  {
+    image: "/images/bd6e88dec0f434f565572c1a818fb23885fb5b33.jpg",
+    title: "BabyMD – Electronic City",
+    location: "locate clinic",
+    hours: [
+      { days: "Monday to Saturday", time: " 8 AM to 1:30 PM | 4 PM to 8:30 PM" },
+      { days: "Sunday", time: "9 AM to 12 PM" },
+    ],
+  },
+  {
+    image: "/images/39e64f6c9f643abdd21ece3b69668b9b60b15dfe.jpg",
+    title: "BabyMD – HSR Layout",
+    location: "locate clinic",
+    hours: [
+      { days: "Monday to Saturday", time: " 8 AM to 1:30 PM | 4 PM to 8:30 PM" },
+      { days: "Sunday", time: "9 AM to 12 PM" },
+    ],
+  },
+  {
+    image: "/images/c340ff5accd3a76b9824168ee4a673930fbf9234.jpg",
+    title: "BabyMD – Varthur",
+    location: "see map",
+    hours: [
+      { days: "Monday to Saturday", time: " 8 AM to 1:30 PM | 4 PM to 8:30 PM" },
+      { days: "Sunday", time: "9 AM to 12 PM" },
+    ],
+  }
+];
   return (
     <>
       <div className="banner-box bg-[#F9EEB6] relative z-2 py-14 pb-6">
@@ -59,33 +106,32 @@ export default function Clinic() {
 
           {/* Clinic Cards */}
           <div className="w-full my-8 flex flex-col md:flex-row gap-4 px-6">
-            {[1, 2, 3, 4].map((_, i) => (
-              <div key={i} className="w-full lg:w-1/2 xl:w-1/4">
-                <div className="bg-white p-4 rounded-[20px]">
-                  <img className="mx-auto rounded-[20px]" src="/images/f599ef5c0bc6b9e548520dd4c3c29270435d932e.jpg" alt="Clinic" />
-                  <div className="p-4">
-                    <h4 className="text-[20px] font-bold my-1 font-lato">BabyMD – Hosa Road</h4>
-                    <div className="flex flex-row gap-2">
-                      <img src="/images/map-pin.svg" alt="Map pin" />
-                      <h5 className="text-[14px] text-[#F8845D] underline uppercase tracking-[2px]">locate clinic</h5>
-                    </div>
-                    <div className="clinic-hrs mt-6">
-                      <h4 className="text-[14px] font-bold font-lato">Clinic Hours:</h4>
-                      <h4 className="text-[14px] font-lato">
-                        <span className="font-bold">Monday to Saturday </span> – 8 AM to 1:30 PM | 4 PM to 8:30 PM
-                      </h4>
-                      <h4 className="text-[14px] font-lato">
-                        <span className="font-bold">Sunday </span> – 9 AM to 12 PM
-                      </h4>
-                      <button type="button" className="text-white bg-[#5943A5] hover:bg-[#F8845D] transition-all focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-7 py-4 text-center mt-5 mx-auto flex flex-row gap-2">
-                        <span>view details</span>
-                        <img src="/images/Group 2349.png" alt="Arrow" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+           {clinics.map((clinic, i) => (
+  <div key={i} className="w-full lg:w-1/2 xl:w-1/4">
+    <div className="bg-white p-4 rounded-[20px]">
+      <img className="mx-auto rounded-[20px] min-h-[205px] object-cover" src={clinic.image} alt="Clinic" />
+      <div className="p-4">
+        <h4 className="text-[20px] font-bold my-1 font-lato">{clinic.title}</h4>
+        <div className="flex flex-row gap-2">
+          <img src="/images/map-pin.svg" alt="Map pin" />
+          <h5 className="text-[14px] text-[#F8845D] underline uppercase tracking-[2px]">{clinic.location}</h5>
+        </div>
+        <div className="clinic-hrs mt-6">
+          <h4 className="text-[14px] font-bold font-lato">Clinic Hours:</h4>
+          {clinic.hours.map((hour, idx) => (
+            <h4 key={idx} className="text-[14px] font-lato">
+              <span className="font-bold">{hour.days} </span> – {hour.time}
+            </h4>
+          ))}
+          <button type="button" className="text-white bg-[#5943A5] hover:bg-[#F8845D] transition-all focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-7 py-4 text-center mt-5 mx-auto flex flex-row gap-2">
+            <span>view details</span>
+            <img src="/images/Group 2349.png" alt="Arrow" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+))}
           </div>
 
           <div className="w-full my-2 flex justify-center flex-row gap-2">
@@ -104,15 +150,15 @@ export default function Clinic() {
           <div className="flex flex-col relative justify-center items-center md:flex-row bg-[#DBFFCC] rounded-[20px] mx-4 md:mx-0 overflow-hidden pt-8">
             <div className="w-full md:w-1/2 px-2 py-2 md:p-4">
               <div className="relative px-8 md:px-0">
-                <h1 className="text-2xl font-bold text-[34px]">
-                  <span className="text-[#5943A5]">You’ve got this. We’ve </span>
+                <h2 className="font-bold text-[28px] leading-[26px]">
+                  <span className="text-[#5943A5]">You’ve got this.<br/>We’ve </span>
                   <span className="relative">
                     <i className="font-normal text-[#5943A5] z-10 relative">got you.</i>
                     <img className="absolute top-[13px] right-0 z-0 w-full" src="/images/Vector 2.svg" alt="Vector 2" />
                   </span>
-                </h1>
+                </h2>
               </div>
-              <button type="button" className="text-white bg-[#5943A5] hover:bg-[#F8845D] transition-all focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-7 py-4 text-center mt-12 mx-auto md:mx-0 flex flex-row gap-2 justify-center bottom-4">
+              <button type="button" className="text-white bg-[#5943A5] hover:bg-[#F8845D] transition-all focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-7 py-4 text-center mt-12 mx-auto md:mx-0 flex flex-row gap-2 justify-center middlingbtns">
                 <span>Care? Right This Way </span>
                 <img src="/images/Group 2349.png" alt="Arrow" />
               </button>
