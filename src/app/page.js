@@ -68,7 +68,7 @@ export default function Home() {
       title: "Pediatric Care Online Workshop",
       image: workshop,
       date: "28 NOV 2025",
-      tags: ["PARENT'S KNOWLEDGE", "CHILD FEEDING CARE", "FEEDING CARE"],
+      tags: ["PARENT&#39;S KNOWLEDGE", "CHILD FEEDING CARE", "FEEDING CARE"],
     },
     {
       title: "Behavioral Milestones Workshop",
@@ -80,7 +80,7 @@ export default function Home() {
       title: "Nutrition for Toddlers Workshop",
       image: workshop3,
       date: "10 JAN 2026",
-      tags: ["NUTRITION", "HEALTHY EATING", "PARENT'S KNOWLEDGE"],
+      tags: ["NUTRITION", "HEALTHY EATING", "PARENT&#39;S KNOWLEDGE"],
     },
     {
       title: "Behavioral Milestones Workshop",
@@ -227,11 +227,11 @@ export default function Home() {
           {/* White Text Frame */}
           <div className="md:mt-7 mb-8">
             <p>
-              You deserve care that's as thoughtful as your
+              You deserve care that&#39;s as thoughtful as your
               <br />
               parenting. From cozy clinics to expert
               <br />
-              pediatricians and holistic support, we're here
+              pediatricians and holistic support, we&#39;re here
               <br />
               for every milestone, worry, and wonder.
             </p>
@@ -262,7 +262,7 @@ export default function Home() {
             className="absolute bottom-12 left-11 transform -translate-x-1/2"
           />
           <button className="absolute flex top-85 translate-x-9 items-center gap-2 bg-[#F9825F] hover:bg-[#f86f47] text-white font-bold py-3 px-10 rounded-full text-sm tracking-wide transition-transform duration-300 transform hover:scale-105">
-            WHERE IS MY SUPERDOC'S?
+            WHERE IS MY SUPERDOC&#39;S?
             <span className="text-white text-base col">âµ</span>
           </button>
         </div>
@@ -538,7 +538,7 @@ export default function Home() {
                 </summary>
                 <div className="p-4 bg-[#E6D6FA] text-sm text-gray-700 leading-relaxed">
                   Comprehensive health check-ups and consultations for your
-                  child's everyday needs.
+                  child&#39;s everyday needs.
                 </div>
               </details>
 
@@ -666,7 +666,7 @@ export default function Home() {
                 <div className="p-4 bg-[#D6F4FA] text-sm text-gray-700 leading-relaxed">
                   Our developmental pediatricians and certified therapists go
                   beyond symptoms to create personalized plans that address your
-                  little one's unique needs â€” from speech delays to behavioral
+                  little one&#39;s unique needs â€” from speech delays to behavioral
                   challenges.
                 </div>
               </details>
@@ -735,17 +735,17 @@ export default function Home() {
           <div className="max-w-2xl">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
               Curious about your{" "}
-              <span className="text-[#4B3A8F]">child's growth?</span>
+              <span className="text-[#4B3A8F]">child&#39;s growth?</span>
               <br />
-              <span className="text-[#4B3A8F]">Let's take a look </span>
+              <span className="text-[#4B3A8F]">Let&#39;s take a look </span>
               <span className="text-[#4B3A8F] italic">together</span>
             </h2>
             <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              You're the expert when it comes to your child â€” but sometimes, it
+              You&#39;re the expert when it comes to your child â€” but sometimes, it
               helps to have an extra pair of professional eyes. Our free, online{" "}
               <span className="font-semibold">milestone assessment tool</span>{" "}
               lets you easily track their development, from physical growth to
-              behavioral needs. In just a few simple steps, you'll get the
+              behavioral needs. In just a few simple steps, you&#39;ll get the
               clarity you need to understand where they stand and feel confident
               in their progress.
             </p>
@@ -785,14 +785,14 @@ export default function Home() {
               <span className="text-[#4B3A8F] italic">the corner</span>
             </h2>
             <p className="text-lg leading-relaxed mb-6">
-              Late-night worries or last-minute scrambles shouldn't mean a long
-              drive or endless queues. We're all about making care easy and
+              Late-night worries or last-minute scrambles shouldn&#39;t mean a long
+              drive or endless queues. We&#39;re all about making care easy and
               accessible, so you can feel confident even on your toughest days.
-              That's why our clinics are right in your neighborhood â€” cozy,
+              That&#39;s why our clinics are right in your neighborhood â€” cozy,
               colourful, and designed with your little one in mind.
             </p>
             <p className="text-lg mb-8">
-              Call us, book online, or just walk in, we'll be ready.
+              Call us, book online, or just walk in, we&#39;ll be ready.
             </p>
             <div className="relative">
               <input
@@ -899,7 +899,7 @@ export default function Home() {
         <div className="bg-[#DFF1FF] rounded-t-3xl p-6 md:p-8 text-[#4B3A8F] relative">
           {/* Heading */}
           <h2 className="text-xl md:text-2xl font-bold mb-2">
-            Don't just <span className="text-purple-600">take</span>
+            Don&#39;t just <span className="text-purple-600">take</span>
             <br />
             <span className="text-purple-600 italic font-medium">
               our word
@@ -916,7 +916,7 @@ export default function Home() {
           <div className="bg-white rounded-lg p-4 md:p-5 mt-4 shadow-sm relative">
             <p className="text-sm leading-relaxed text-gray-800">
               "We had a wonderful consultation with Dr Shivanga Bora at BabyMD
-              HSR Layout, for my son's wheezing issue. She was incredibly
+              HSR Layout, for my son&#39;s wheezing issue. She was incredibly
               patient, listened to all our concerns, and provided a clear
               effective treatment plan. Her friendly approach and expertise made
               us feel reassured and confident in the care my son received. Highly
@@ -966,7 +966,7 @@ export default function Home() {
             </h2>
             <p className="text-sm text-black mt-2 leading-tight">
               Ever wished parenting came with a guidebook? From picky eating to
-              tantrums, we know you've got questions. Join our expert-led
+              tantrums, we know you&#39;ve got questions. Join our expert-led
               webinars to get practical tips and expert answers to feel confident
               and supported in your parenting journey.
             </p>
